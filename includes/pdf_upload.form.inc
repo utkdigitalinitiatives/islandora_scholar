@@ -76,37 +76,8 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
         ':input[name="supply_supplemental"]' => array('checked' => TRUE),
       ),
     ),
-//    $form['file'] = array(
-//      '#type' => 'managed_file',
-//      '#title' => 'Supplemental FileA',
-//      '#upload_location' => 'temporary://',
-//      '#upload_validators' => array(
-//        'file_validate_extensions' => array(),
-//        'file_validate_size' => array($upload_size * 1024 * 1024),
-//      ),
-//    ),
-//    $form['file'] = array(
-//      '#type' => 'managed_file',
-//      '#title' => 'Supplemental FileB',
-//      '#upload_location' => 'temporary://',
-//      '#upload_validators' => array(
-//        'file_validate_extensions' => array(),
-//        'file_validate_size' => array($upload_size * 1024 * 1024),
-//      ),
-//    ),
-//    $form['file'] = array(
-//      '#type' => 'managed_file',
-//      '#title' => 'Supplemental FileC',
-//      '#upload_location' => 'temporary://',
-//      '#upload_validators' => array(
-//        'file_validate_extensions' => array(),
-//        'file_validate_size' => array($upload_size * 1024 * 1024),
-//      ),
-//    ),
-//  );
-
   );
-  $form['upload_supplemental']['set1']['file'] = array(
+  $form['upload_supplemental']['set1']['file1'] = array(
     '#type' => 'managed_file',
     '#title' => 'Supplemental File 1',
     '#upload_location' => 'temporary://',
@@ -124,19 +95,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       'file_validate_size' => array($upload_size * 1024 * 1024),
     ),
   );
-  $form['upload_supplemental']['set1']['supply_supplemental'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Would you like to include supplemental files with this ETD?'),
-  );
-  $form['upload_supplemental']['set1'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Upload Supplemental Files'),
-    '#states' => array(
-      'visible' => array(
-        ':input[name="upload_supplemental"][name="set1"][name="supply_supplemental"]' => array('checked' => TRUE),
-      ),
-    ),
-  $form['upload_supplemental']['set2']['file'] = array(
+  $form['upload_supplemental']['set1']['file3'] = array(
     '#type' => 'managed_file',
     '#title' => 'Supplemental File 3',
     '#upload_location' => 'temporary://',
@@ -145,7 +104,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       'file_validate_size' => array($upload_size * 1024 * 1024),
     ),
   );
-  $form['upload_supplemental']['set2']['file2'] = array(
+  $form['upload_supplemental']['set1']['file4'] = array(
     '#type' => 'managed_file',
     '#title' => 'Supplemental File 4',
     '#upload_location' => 'temporary://',
@@ -154,8 +113,61 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       'file_validate_size' => array($upload_size * 1024 * 1024),
     ),
   );
+  $form['upload_supplemental']['set1']['file5'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 5',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    ),
+  );
+  $form['upload_supplemental']['supply_supplemental2'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Would you like to include additional supplemental files with this ETD?'),
+    $form['upload_supplemental2'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Additional Supplemental Files'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="supply_supplemental2"]' => array('checked' => TRUE),
+        ),
+      ),
+    ),
+  );
+  $form['upload_supplemental2']['set2']['file6'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 6',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    ),
+  );
+  $form['upload_supplemental2']['set2']['file7'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 7',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    ),
+  );
+  $form['upload_supplemental2']['supply_supplemental3'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Would you like to include additional supplemental files with this ETD (Part II)?'),
+    $form['upload_supplemental3'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Additional Supplemental Files, Part II'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="supply_supplemental3"]' => array('checked' => TRUE),
+        ),
+      ),
+    ),
+  );
 
-  return $form;
+return $form;
 }
 
 /**
