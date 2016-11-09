@@ -217,6 +217,11 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
     $object->ingestDatastream($datastream);
     islandora_scholar_add_usage_and_version_elements_to_mods($object, $form_state['values']['usage'], $form_state['values']['version']);
   }
+  if ($form_state['values']['supply_supplemental']) {
+    $object = islandora_ingest_form_get_object($form_state);
+    module_load_include('inc', 'islandora_scholar', 'includes/upload.tab');
+    // loop over or hard code?
+  }
 }
 
 /**
