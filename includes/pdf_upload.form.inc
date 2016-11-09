@@ -76,36 +76,85 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
         ':input[name="supply_supplemental"]' => array('checked' => TRUE),
       ),
     ),
-    $form['file'] = array(
-      '#type' => 'managed_file',
-      '#title' => 'Supplemental File',
-      '#upload_location' => 'temporary://',
-      '#upload_validators' => array(
-        'file_validate_extensions' => array(),
-        'file_validate_size' => array($upload_size * 1024 * 1024),
+//    $form['file'] = array(
+//      '#type' => 'managed_file',
+//      '#title' => 'Supplemental FileA',
+//      '#upload_location' => 'temporary://',
+//      '#upload_validators' => array(
+//        'file_validate_extensions' => array(),
+//        'file_validate_size' => array($upload_size * 1024 * 1024),
+//      ),
+//    ),
+//    $form['file'] = array(
+//      '#type' => 'managed_file',
+//      '#title' => 'Supplemental FileB',
+//      '#upload_location' => 'temporary://',
+//      '#upload_validators' => array(
+//        'file_validate_extensions' => array(),
+//        'file_validate_size' => array($upload_size * 1024 * 1024),
+//      ),
+//    ),
+//    $form['file'] = array(
+//      '#type' => 'managed_file',
+//      '#title' => 'Supplemental FileC',
+//      '#upload_location' => 'temporary://',
+//      '#upload_validators' => array(
+//        'file_validate_extensions' => array(),
+//        'file_validate_size' => array($upload_size * 1024 * 1024),
+//      ),
+//    ),
+//  );
+
+  );
+  $form['upload_supplemental']['set1']['file'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 1',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    ),
+  );
+  $form['upload_supplemental']['set1']['file2'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 2',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    ),
+  );
+  $form['upload_supplemental']['set1']['supply_supplemental'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Would you like to include supplemental files with this ETD?'),
+  );
+  $form['upload_supplemental']['set1'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Upload Supplemental Files'),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="upload_supplemental"][name="set1"][name="supply_supplemental"]' => array('checked' => TRUE),
       ),
     ),
-    $form['file'] = array(
-      '#type' => 'managed_file',
-      '#title' => 'Supplemental File',
-      '#upload_location' => 'temporary://',
-      '#upload_validators' => array(
-        'file_validate_extensions' => array(),
-        'file_validate_size' => array($upload_size * 1024 * 1024),
-      ),
+  $form['upload_supplemental']['set2']['file'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 3',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    ),
+  );
+  $form['upload_supplemental']['set2']['file2'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 4',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
     ),
   );
 
-//  );
-//  $form['upload_supplemental']['file'] = array(
-//    '#type' => 'managed_file',
-//    '#title' => 'Supplemental File',
-//    '#upload_location' => 'temporary://',
-//    '#upload_validators' => array(
-//      'file_validate_extensions' => array(),
-//      'file_validate_size' => array($upload_size * 1024 * 1024),
-//    ),
-//  );
   return $form;
 }
 
