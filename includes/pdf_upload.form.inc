@@ -325,18 +325,6 @@ function islandora_scholar_pdf_upload_form_validate($form, $form_state) {
     if (empty($form_state['values']['certifying']['certify'])) {
       form_set_error('certifying', t('You must certify that you have the right to upload this PDF!'));
     }
-    if (empty($form_state['values']['supply_supplemental'])) {
-      form_set_error('supply_supplemental', t('A supplemental file must be uploaded!'));
-    }
-    if (empty($form_state['values']['supply_supplemental2'])) {
-      form_set_error('supply_supplemental', t('A supplemental file must be uploaded!'));
-    }
-    if (empty($form_state['values']['supply_supplemental3'])) {
-      form_set_error('supply_supplemental', t('A supplemental file must be uploaded!'));
-    }
-    if (empty($form_state['values']['supply_supplemental4'])) {
-      form_set_error('supply_supplemental', t('A supplemental file must be uploaded!'));
-    }
   }
 }
 
@@ -365,12 +353,186 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
   if ($form_state['values']['supply_supplemental']) {
     $object = islandora_ingest_form_get_object($form_state);
     module_load_include('inc', 'islandora_scholar', 'includes/upload.tab');
-    $file = file_load($form_state['values']['file1']);
-    $datastream = $object->constructDatastream('SUPPL_0', 'M');
-    $datastream->label = $file->filename;
-    $datastream->mimetype = 'application/octet-stream';
-    // look at is_file as a check for this section
-
+    // SUPPL_0
+    if ($form_state['values']['file1']) {
+      $file1 = file_load($form_state['values']['file1']);
+      $datastream = $object->constructDatastream('SUPPL_0', 'M');
+      $datastream->label = $file1->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file1->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    // SUPPL_1
+    if ($form_state['values']['file2']) {
+      $file2 = file_load($form_state['values']['file2']);
+      $datastream = $object->constructDatastream('SUPPL_1', 'M');
+      $datastream->label = $file2->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file2->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    // SUPPL_2
+    if ($form_state['values']['file3']) {
+      $file3 = file_load($form_state['values']['file3']);
+      $datastream = $object->constructDatastream('SUPPL_2', 'M');
+      $datastream->label = $file3->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file3->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    // SUPPL_3
+    if ($form_state['values']['file4']) {
+      $file4 = file_load($form_state['values']['file4']);
+      $datastream = $object->constructDatastream('SUPPL_3', 'M');
+      $datastream->label = $file4->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file4->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    // SUPPLE_4
+    if ($form_state['values']['file5']) {
+      $file5 = file_load($form_state['values']['file5']);
+      $datastream = $object->constructDatastream('SUPPL_4', 'M');
+      $datastream->label = $file5->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file5->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+  }
+  if ($form_state['values']['supply_supplemental2']) {
+    $object = islandora_ingest_form_get_object($form_state);
+    module_load_include('inc', 'islandora_scholar', 'includes/upload.tab');
+    // SUPPL_5
+    if ($form_state['values']['file6']) {
+      $file6 = file_load($form_state['values']['file6']);
+      $datastream = $object->constructDatastream('SUPPL_5', 'M');
+      $datastream->label = $file6->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file6->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file7']) {
+      $file7 = file_load($form_state['values']['file7']);
+      $datastream = $object->constructDatastream('SUPPL_6', 'M');
+      $datastream->label = $file7->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file7->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file8']) {
+      $file8 = file_load($form_state['values']['file8']);
+      $datastream = $object->constructDatastream('SUPPL_7', 'M');
+      $datastream->label = $file8->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file8->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file9']) {
+      $file9 = file_load($form_state['values']['file9']);
+      $datastream = $object->constructDatastream('SUPPL_8', 'M');
+      $datastream->label = $file9->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file9->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file10']) {
+      $file10 = file_load($form_state['values']['file10']);
+      $datastream = $object->constructDatastream('SUPPL_9', 'M');
+      $datastream->label = $file10->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file10->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+  }
+  if ($form_state['values']['supply_supplemental3']) {
+    $object = islandora_ingest_form_get_object($form_state);
+    module_load_include('inc', 'islandora_scholar', 'includes/upload.tab');
+    // SUPPL_5
+    if ($form_state['values']['file11']) {
+      $file11 = file_load($form_state['values']['file11']);
+      $datastream = $object->constructDatastream('SUPPL_10', 'M');
+      $datastream->label = $file11->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file11->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file12']) {
+      $file12 = file_load($form_state['values']['file12']);
+      $datastream = $object->constructDatastream('SUPPL_11', 'M');
+      $datastream->label = $file12->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file12->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file13']) {
+      $file13 = file_load($form_state['values']['file13']);
+      $datastream = $object->constructDatastream('SUPPL_12', 'M');
+      $datastream->label = $file13->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file13->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file14']) {
+      $file14 = file_load($form_state['values']['file14']);
+      $datastream = $object->constructDatastream('SUPPL_13', 'M');
+      $datastream->label = $file14->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file14->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file15']) {
+      $file15 = file_load($form_state['values']['file15']);
+      $datastream = $object->constructDatastream('SUPPL_14', 'M');
+      $datastream->label = $file15->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file15->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+  }
+  if ($form_state['values']['supply_supplemental4']) {
+    $object = islandora_ingest_form_get_object($form_state);
+    module_load_include('inc', 'islandora_scholar', 'includes/upload.tab');
+    // SUPPL_5
+    if ($form_state['values']['file16']) {
+      $file16 = file_load($form_state['values']['file16']);
+      $datastream = $object->constructDatastream('SUPPL_15', 'M');
+      $datastream->label = $file16->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file16->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file17']) {
+      $file17 = file_load($form_state['values']['file17']);
+      $datastream = $object->constructDatastream('SUPPL_16', 'M');
+      $datastream->label = $file17->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file17->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file18']) {
+      $file18 = file_load($form_state['values']['file18']);
+      $datastream = $object->constructDatastream('SUPPL_17', 'M');
+      $datastream->label = $file18->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file18->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file19']) {
+      $file19 = file_load($form_state['values']['file19']);
+      $datastream = $object->constructDatastream('SUPPL_18', 'M');
+      $datastream->label = $file19->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file19->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
+    if ($form_state['values']['file20']) {
+      $file20 = file_load($form_state['values']['file20']);
+      $datastream = $object->constructDatastream('SUPPL_19', 'M');
+      $datastream->label = $file20->filename;
+      $datastream->mimetype = 'application/octet-stream';
+      $datastream->setContentFromFile($file20->uri, FALSE);
+      $object->ingestDatastream($datastream);
+    }
   }
 }
 
