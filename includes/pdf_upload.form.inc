@@ -370,6 +370,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
     $datastream->label = $file->filename;
     $datastream->mimetype = 'application/octet-stream';
     // look at is_file as a check for this section
+
   }
 }
 
