@@ -251,7 +251,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       ),
     ),
   );
-  $form['upload_supplemental3']['set3']['file16'] = array(
+  $form['upload_supplemental4']['set3']['file16'] = array(
     '#type' => 'managed_file',
     '#title' => 'Supplemental File 16',
     '#upload_location' => 'temporary://',
@@ -260,7 +260,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       'file_validate_size' => array($upload_size * 1024 * 1024),
     )
   );
-  $form['upload_supplemental3']['set3']['file17'] = array(
+  $form['upload_supplemental4']['set3']['file17'] = array(
     '#type' => 'managed_file',
     '#title' => 'Supplemental File 17',
     '#upload_location' => 'temporary://',
@@ -269,7 +269,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       'file_validate_size' => array($upload_size * 1024 * 1024),
     )
   );
-  $form['upload_supplemental3']['set3']['file18'] = array(
+  $form['upload_supplemental4']['set3']['file18'] = array(
     '#type' => 'managed_file',
     '#title' => 'Supplemental File 18',
     '#upload_location' => 'temporary://',
@@ -278,7 +278,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       'file_validate_size' => array($upload_size * 1024 * 1024),
     )
   );
-  $form['upload_supplemental3']['set3']['file19'] = array(
+  $form['upload_supplemental4']['set3']['file19'] = array(
     '#type' => 'managed_file',
     '#title' => 'Supplemental File 19',
     '#upload_location' => 'temporary://',
@@ -287,7 +287,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       'file_validate_size' => array($upload_size * 1024 * 1024),
     )
   );
-  $form['upload_supplemental3']['set3']['file20'] = array(
+  $form['upload_supplemental4']['set3']['file20'] = array(
     '#type' => 'managed_file',
     '#title' => 'Supplemental File 20',
     '#upload_location' => 'temporary://',
@@ -295,6 +295,10 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       'file_validate_extensions' => array(),
       'file_validate_size' => array($upload_size * 1024 * 1024),
     )
+  );
+  $form['upload_supplemental4']['supply_supplemental5'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Would you like to continue adding supplemental files? Please contact admin-at-trace @ trace for assistance'),
   );
 return $form;
 }
