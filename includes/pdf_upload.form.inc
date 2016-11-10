@@ -153,6 +153,33 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       'file_validate_size' => array($upload_size * 1024 * 1024),
     ),
   );
+  $form['upload_supplemental2']['set2']['file8'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 8',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    ),
+  );
+  $form['upload_supplemental2']['set2']['file9'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 9',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    ),
+  );
+  $form['upload_supplemental2']['set2']['file10'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 10',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    ),
+  );
   $form['upload_supplemental2']['supply_supplemental3'] = array(
     '#type' => 'checkbox',
     '#title' => t('Would you like to include additional supplemental files with this ETD (Part II)?'),
@@ -166,7 +193,109 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
       ),
     ),
   );
-
+  $form['upload_supplemental3']['set3']['file11'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 11',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    )
+  );
+  $form['upload_supplemental3']['set3']['file12'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 12',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    )
+  );
+  $form['upload_supplemental3']['set3']['file13'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 13',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    )
+  );
+  $form['upload_supplemental3']['set3']['file14'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 14',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    )
+  );
+  $form['upload_supplemental3']['set3']['file15'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 15',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    )
+  );
+  $form['upload_supplemental3']['supply_supplemental4'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Would you like to include additional supplemental files with this ETD (Part III)?'),
+    $form['upload_supplemental4'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Additional Supplemental Files, Part III'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="supply_supplemental4"]' => array('checked' => TRUE),
+        ),
+      ),
+    ),
+  );
+  $form['upload_supplemental3']['set3']['file16'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 16',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    )
+  );
+  $form['upload_supplemental3']['set3']['file17'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 17',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    )
+  );
+  $form['upload_supplemental3']['set3']['file18'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 18',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    )
+  );
+  $form['upload_supplemental3']['set3']['file19'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 19',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    )
+  );
+  $form['upload_supplemental3']['set3']['file20'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'Supplemental File 20',
+    '#upload_location' => 'temporary://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array(),
+      'file_validate_size' => array($upload_size * 1024 * 1024),
+    )
+  );
 return $form;
 }
 
@@ -191,6 +320,18 @@ function islandora_scholar_pdf_upload_form_validate($form, $form_state) {
     }
     if (empty($form_state['values']['certifying']['certify'])) {
       form_set_error('certifying', t('You must certify that you have the right to upload this PDF!'));
+    }
+    if (empty($form_state['values']['supply_supplemental'])) {
+      form_set_error('supply_supplemental', t('A supplemental file must be uploaded!'));
+    }
+    if (empty($form_state['values']['supply_supplemental2'])) {
+      form_set_error('supply_supplemental', t('A supplemental file must be uploaded!'));
+    }
+    if (empty($form_state['values']['supply_supplemental3'])) {
+      form_set_error('supply_supplemental', t('A supplemental file must be uploaded!'));
+    }
+    if (empty($form_state['values']['supply_supplemental4'])) {
+      form_set_error('supply_supplemental', t('A supplemental file must be uploaded!'));
     }
   }
 }
