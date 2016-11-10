@@ -170,16 +170,6 @@ function islandora_scholar_islandora_required_objects(IslandoraTuque $connection
   $datastream->setContentFromFile("$module_path/images/Crystal_Clear_filesystem_folder_grey.png", FALSE);
   $citation_collection->ingestDatastream($datastream);
 
-  $datastream = $citation_collection->constructDatastream('SUPPL_0', 'M');
-  $datastream->label = 'Supplemental File 0';
-  $datastream->mimetype = 'application/octet-stream';
-  $citation_collection->ingestDatastream($datastream);
-
-  $datastream = $citation_collection->constructDatastream('SUPPL_1', 'M');
-  $datastream->label = 'Supplemental File 1';
-  $datastream->mimetype = 'application/octet-stream';
-  $citation_collection->ingestDatastream($datastream);
-
   return array(
     'islandora_scholar' => array(
       'title' => 'Islandora Scholar',
