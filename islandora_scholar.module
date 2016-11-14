@@ -169,6 +169,7 @@ function islandora_scholar_islandora_required_objects(IslandoraTuque $connection
   $datastream->mimetype = 'image/png';
   $datastream->setContentFromFile("$module_path/images/Crystal_Clear_filesystem_folder_grey.png", FALSE);
   $citation_collection->ingestDatastream($datastream);
+
   return array(
     'islandora_scholar' => array(
       'title' => 'Islandora Scholar',
