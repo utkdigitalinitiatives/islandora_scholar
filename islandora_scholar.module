@@ -140,7 +140,7 @@ function islandora_scholar_islandora_required_objects(IslandoraTuque $connection
   // Thesis Content model.
   $thesis_content_model = $connection->repository->constructObject('ir:thesisCModel');
   $thesis_content_model->owner = 'fedoraAdmin';
-  $thesis_content_model->label = 'Thesis and Dissertation';
+  $thesis_content_model->label = 'Thesis or Dissertation';
   $thesis_content_model->models = 'fedora-system:ContentModel-3.0';
 
   // DS-COMPOSITE-MODEL Datastream.
