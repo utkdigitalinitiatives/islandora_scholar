@@ -64,7 +64,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state)
     );
     $form['upload_supplemental'] = array(
         '#type' => 'fieldset',
-        '#title' => t('Upload Supplemental Files'),
+        '#title' => t('Upload Supplemental Files (Optional)'),
         '#states' => array(
             'visible' => array(
                 ':input[name="supply_supplemental"]' => array('checked' => TRUE),
