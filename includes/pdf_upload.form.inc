@@ -58,6 +58,9 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state)
             'certify' => t('I certify that I have the right to upload this version.'),
         ),
     );
+    $form['optional_supplemental'] = array(
+        '#markup' => '<h1>Optional</h1>',
+    );
     $form['supply_supplemental'] = array(
         '#type' => 'checkbox',
         '#title' => t('Would you like to include supplemental files with this Electronic Thesis or Dissertation?'),
