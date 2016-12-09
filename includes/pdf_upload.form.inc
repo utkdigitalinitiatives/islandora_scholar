@@ -59,7 +59,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state)
         ),
     );
     $form['optional_supplemental'] = array(
-        '#markup' => '<h1>Optional</h1>',
+        '#markup' => '<h1>Add Supplemental Files (Optional)</h1>',
     );
     $form['supply_supplemental'] = array(
         '#type' => 'checkbox',
