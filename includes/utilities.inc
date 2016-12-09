@@ -33,6 +33,68 @@ function islandora_scholar_get_view(AbstractObject $object) {
     'pdf_download' => array(
       '#weight' => $i++,
     ),
+      'supplemental_download_0' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_1' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_2' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_3' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_4' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_5' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_6' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_7' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_8' => array(
+      ),
+      'supplemental_download_9' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_10' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_11' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_12' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_13' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_14' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_15' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_16' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_17' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_18' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_19' => array(
+          '#weight' => $i++,
+      ),
+      'supplemental_download_20' => array(
+          '#weight' => $i++,
+      ),
     'metadata' => islandora_scholar_get_metadata_display($object, $i++),
     'suffix' => array(
       '#markup' => "</div>",
@@ -80,7 +142,10 @@ function islandora_scholar_get_view(AbstractObject $object) {
   module_load_include('inc', 'islandora', 'includes/solution_packs');
   $viewer = islandora_get_viewer(array(), 'islandora_scholar_viewers', $object);
 
-  if ($viewer) {
+
+
+
+if ($viewer) {
     $display['preview'] = array(
       '#markup' => $viewer,
       '#weight' => $display['preview']['#weight'],
@@ -110,12 +175,154 @@ function islandora_scholar_get_view(AbstractObject $object) {
   if (isset($object['PDF']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['PDF'])) {
     $display['pdf_download'] = array(
       '#type' => 'item',
-      '#title' => t('Download'),
+      '#title' => t('Downloads'),
       '#markup' => l(t('PDF'), "islandora/object/$object->id/datastream/PDF/download/citation.pdf"),
       '#weight' => $display['pdf_download']['#weight'],
     );
   }
-  return array('citation.tab' => $display);
+  if (isset($object['SUPPL_0']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_0'])){
+      $display['supplemental_download_0'] = array(
+          '#type' => 'item',
+          '#title' => t('Supplemental Files'),
+          '#markup' => l(t('Supplemental File 1'), "islandora/object/$object->id/datastream/SUPPL_0/download/"),
+          '#weight' => $display['supplemental_download_0']['#weight'],
+      );
+  }
+    if (isset($object['SUPPL_1']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_1'])){
+        $display['supplemental_download_1'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 2'), "islandora/object/$object->id/datastream/SUPPL_1/download/"),
+            '#weight' => $display['supplemental_download_1']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_2']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_2'])){
+        $display['supplemental_download_2'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 3'), "islandora/object/$object->id/datastream/SUPPL_2/download/"),
+            '#weight' => $display['supplemental_download_2']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_3']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_3'])){
+        $display['supplemental_download_3'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 4'), "islandora/object/$object->id/datastream/SUPPL_3/download/"),
+            '#weight' => $display['supplemental_download_3']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_4']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_4'])){
+        $display['supplemental_download_4'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 5'), "islandora/object/$object->id/datastream/SUPPL_4/download/"),
+            '#weight' => $display['supplemental_download_4']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_5']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_5'])){
+        $display['supplemental_download_5'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 6'), "islandora/object/$object->id/datastream/SUPPL_5/download/"),
+            '#weight' => $display['supplemental_download_5']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_6']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_6'])) {
+        $display['supplemental_download_6'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 7'), "islandora/object/$object->id/datastream/SUPPL_6/download/"),
+            '#weight' => $display['supplemental_download_6']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_7']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_7'])) {
+        $display['supplemental_download_7'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 8'), "islandora/object/$object->id/datastream/SUPPL_7/download/"),
+            '#weight' => $display['supplemental_download_7']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_8']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_8'])) {
+        $display['supplemental_download_8'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 9'), "islandora/object/$object->id/datastream/SUPPL_8/download/"),
+            '#weight' => $display['supplemental_download_8']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_9']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_9'])) {
+        $display['supplemental_download_9'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 10'), "islandora/object/$object->id/datastream/SUPPL_9/download/"),
+            '#weight' => $display['supplemental_download_9']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_10']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_10'])){
+        $display['supplemental_download_10'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 11'), "islandora/object/$object->id/datastream/SUPPL_10/download/"),
+            '#weight' => $display['supplemental_download_10']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_11']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_11'])){
+        $display['supplemental_download_11'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 12'), "islandora/object/$object->id/datastream/SUPPL_11/download/"),
+            '#weight' => $display['supplemental_download_11']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_12']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_12'])){
+        $display['supplemental_download_12'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 13'), "islandora/object/$object->id/datastream/SUPPL_12/download/"),
+            '#weight' => $display['supplemental_download_12']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_13']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_13'])){
+        $display['supplemental_download_13'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 14'), "islandora/object/$object->id/datastream/SUPPL_13/download/"),
+            '#weight' => $display['supplemental_download_13']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_14']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_14'])){
+        $display['supplemental_download_14'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 15'), "islandora/object/$object->id/datastream/SUPPL_14/download/"),
+            '#weight' => $display['supplemental_download_14']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_15']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_15'])){
+        $display['supplemental_download_15'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 16'), "islandora/object/$object->id/datastream/SUPPL_15/download/"),
+            '#weight' => $display['supplemental_download_15']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_16']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_16'])) {
+        $display['supplemental_download_16'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 17'), "islandora/object/$object->id/datastream/SUPPL_16/download/"),
+            '#weight' => $display['supplemental_download_16']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_17']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_17'])) {
+        $display['supplemental_download_17'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 18'), "islandora/object/$object->id/datastream/SUPPL_17/download/"),
+            '#weight' => $display['supplemental_download_17']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_18']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_18'])) {
+        $display['supplemental_download_18'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 19'), "islandora/object/$object->id/datastream/SUPPL_18/download/"),
+            '#weight' => $display['supplemental_download_18']['#weight'],
+        );
+    }
+    if (isset($object['SUPPL_19']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['SUPPL_19'])) {
+        $display['supplemental_download_19'] = array(
+            '#type' => 'item',
+            '#markup' => l(t('Supplemental File 20'), "islandora/object/$object->id/datastream/SUPPL_20/download/"),
+            '#weight' => $display['supplemental_download_20']['#weight'],
+        );
+    }
+
+    return array('citation.tab' => $display);
 }
 
 /**
