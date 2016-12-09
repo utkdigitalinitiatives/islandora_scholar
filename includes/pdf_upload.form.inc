@@ -363,7 +363,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file1 = file_load($form_state['values']['file1']);
             $datastream = $object->constructDatastream('SUPPL_0', 'M');
             $datastream->label = $file1->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file1->filemime;
             $datastream->setContentFromFile($file1->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -372,7 +372,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file2 = file_load($form_state['values']['file2']);
             $datastream = $object->constructDatastream('SUPPL_1', 'M');
             $datastream->label = $file2->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file2->filemime;
             $datastream->setContentFromFile($file2->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -381,7 +381,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file3 = file_load($form_state['values']['file3']);
             $datastream = $object->constructDatastream('SUPPL_2', 'M');
             $datastream->label = $file3->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file3->filemime;
             $datastream->setContentFromFile($file3->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -390,7 +390,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file4 = file_load($form_state['values']['file4']);
             $datastream = $object->constructDatastream('SUPPL_3', 'M');
             $datastream->label = $file4->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file4->filemime;
             $datastream->setContentFromFile($file4->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -399,7 +399,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file5 = file_load($form_state['values']['file5']);
             $datastream = $object->constructDatastream('SUPPL_4', 'M');
             $datastream->label = $file5->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file5->filemime;
             $datastream->setContentFromFile($file5->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -412,7 +412,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file6 = file_load($form_state['values']['file6']);
             $datastream = $object->constructDatastream('SUPPL_5', 'M');
             $datastream->label = $file6->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file6->filemime;
             $datastream->setContentFromFile($file6->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -420,7 +420,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file7 = file_load($form_state['values']['file7']);
             $datastream = $object->constructDatastream('SUPPL_6', 'M');
             $datastream->label = $file7->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file7->filemime;
             $datastream->setContentFromFile($file7->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -428,7 +428,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file8 = file_load($form_state['values']['file8']);
             $datastream = $object->constructDatastream('SUPPL_7', 'M');
             $datastream->label = $file8->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file8->filemime;
             $datastream->setContentFromFile($file8->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -436,7 +436,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file9 = file_load($form_state['values']['file9']);
             $datastream = $object->constructDatastream('SUPPL_8', 'M');
             $datastream->label = $file9->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file9->filemime;
             $datastream->setContentFromFile($file9->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -444,7 +444,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file10 = file_load($form_state['values']['file10']);
             $datastream = $object->constructDatastream('SUPPL_9', 'M');
             $datastream->label = $file10->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file10->filemime;
             $datastream->setContentFromFile($file10->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -457,7 +457,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file11 = file_load($form_state['values']['file11']);
             $datastream = $object->constructDatastream('SUPPL_10', 'M');
             $datastream->label = $file11->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file11->filemime;
             $datastream->setContentFromFile($file11->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -465,7 +465,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file12 = file_load($form_state['values']['file12']);
             $datastream = $object->constructDatastream('SUPPL_11', 'M');
             $datastream->label = $file12->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file12->filemime;
             $datastream->setContentFromFile($file12->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -473,7 +473,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file13 = file_load($form_state['values']['file13']);
             $datastream = $object->constructDatastream('SUPPL_12', 'M');
             $datastream->label = $file13->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file13->filemime;
             $datastream->setContentFromFile($file13->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -481,7 +481,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file14 = file_load($form_state['values']['file14']);
             $datastream = $object->constructDatastream('SUPPL_13', 'M');
             $datastream->label = $file14->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file14->filemime;
             $datastream->setContentFromFile($file14->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -489,7 +489,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file15 = file_load($form_state['values']['file15']);
             $datastream = $object->constructDatastream('SUPPL_14', 'M');
             $datastream->label = $file15->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file15->filemime;
             $datastream->setContentFromFile($file15->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -502,7 +502,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file16 = file_load($form_state['values']['file16']);
             $datastream = $object->constructDatastream('SUPPL_15', 'M');
             $datastream->label = $file16->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file16->filemime;
             $datastream->setContentFromFile($file16->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -510,7 +510,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file17 = file_load($form_state['values']['file17']);
             $datastream = $object->constructDatastream('SUPPL_16', 'M');
             $datastream->label = $file17->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file17->filemime;
             $datastream->setContentFromFile($file17->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -518,7 +518,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file18 = file_load($form_state['values']['file18']);
             $datastream = $object->constructDatastream('SUPPL_17', 'M');
             $datastream->label = $file18->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file18->filemime;
             $datastream->setContentFromFile($file18->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -526,7 +526,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file19 = file_load($form_state['values']['file19']);
             $datastream = $object->constructDatastream('SUPPL_18', 'M');
             $datastream->label = $file19->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file19->filemime;
             $datastream->setContentFromFile($file19->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
@@ -534,7 +534,7 @@ function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_stat
             $file20 = file_load($form_state['values']['file20']);
             $datastream = $object->constructDatastream('SUPPL_19', 'M');
             $datastream->label = $file20->filename;
-            $datastream->mimetype = 'application/octet-stream';
+            $datastream->mimetype = $file20->filemime;
             $datastream->setContentFromFile($file20->uri, FALSE);
             $object->ingestDatastream($datastream);
         }
