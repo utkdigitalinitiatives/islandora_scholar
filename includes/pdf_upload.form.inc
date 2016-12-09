@@ -26,18 +26,9 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state)
     // Pull use permissions from the module settings if available.
     $use_permissions = get_use_permissions();
 
-    $form['upload_pdf_checkbox'] = array(
-        '#type' => 'checkbox',
-        '#title' => t('Would you like to include a PDF document for this citation?'),
-    );
     $form['upload_document'] = array(
         '#type' => 'fieldset',
         '#title' => t('Upload Document'),
-        '#states' => array(
-            'visible' => array(
-                ':input[name="upload_pdf_checkbox"]' => array('checked' => TRUE),
-            ),
-        ),
     );
     $form['upload_document']['file'] = array(
         '#type' => 'managed_file',
@@ -316,7 +307,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state)
  */
 function islandora_scholar_pdf_upload_form_validate($form, $form_state)
 {
-    if ($form_state['values']['upload_pdf_checkbox']) {
+
         if (empty($form_state['values']['file'])) {
             form_set_error('file', t('A file must be uploaded!'));
         }
@@ -329,7 +320,7 @@ function islandora_scholar_pdf_upload_form_validate($form, $form_state)
         if (empty($form_state['values']['certifying']['certify'])) {
             form_set_error('certifying', t('You must certify that you have the right to upload this PDF!'));
         }
-    }
+
 }
 
 /**
@@ -344,17 +335,16 @@ function islandora_scholar_pdf_upload_form_validate($form, $form_state)
  */
 function islandora_scholar_pdf_upload_form_submit(array $form, array &$form_state)
 {
-    if ($form_state['values']['upload_pdf_checkbox']) {
-        $object = islandora_ingest_form_get_object($form_state);
-        module_load_include('inc', 'islandora_scholar', 'includes/upload.tab');
-        $file = file_load($form_state['values']['file']);
-        $datastream = $object->constructDatastream('PDF', 'M');
-        $datastream->label = $file->filename;
-        $datastream->mimetype = 'application/pdf';
-        $datastream->setContentFromFile($file->uri, FALSE);
-        $object->ingestDatastream($datastream);
-        islandora_scholar_add_usage_and_version_elements_to_mods($object, $form_state['values']['usage'], $form_state['values']['version']);
-    }
+    $object = islandora_ingest_form_get_object($form_state);
+    module_load_include('inc', 'islandora_scholar', 'includes/upload.tab');
+    $file = file_load($form_state['values']['file']);
+    $datastream = $object->constructDatastream('PDF', 'M');
+    $datastream->label = $file->filename;
+    $datastream->mimetype = 'application/pdf';
+    $datastream->setContentFromFile($file->uri, FALSE);
+    $object->ingestDatastream($datastream);
+    islandora_scholar_add_usage_and_version_elements_to_mods($object, $form_state['values']['usage'], $form_state['values']['version']);
+
     if ($form_state['values']['supply_supplemental']) {
         $object = islandora_ingest_form_get_object($form_state);
         module_load_include('inc', 'islandora_scholar', 'includes/upload.tab');
