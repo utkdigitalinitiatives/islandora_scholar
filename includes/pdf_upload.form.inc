@@ -66,7 +66,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state) {
   );
   $form['supply_supplemental'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Would you like to include supplemental files with this ETD?'),
+    '#title' => t('Would you like to include supplemental files with this Electronic Thesis or Dissertation?'),
   );
   $form['upload_supplemental'] = array(
     '#type' => 'fieldset',
