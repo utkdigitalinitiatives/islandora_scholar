@@ -247,7 +247,6 @@ function islandora_scholar_add_usage_and_version_elements_to_mods(AbstractObject
   $physical_description_element = $doc->createElementNS($namespace, 'physicalDescription');
   $physical_description_note = $doc->createElementNS($namespace, 'note');
   $physical_description_note->setAttribute('displayLabel', 'Publication Status');
-  $physical_description_element->setAttribute('authority', 'local');
   $physical_description_note = $doc->createElementNS($namespace, 'note');
   $physical_description_note->setAttribute('displayLabel', 'Publication Status');
   $physical_description_note->nodeValue = $version;
