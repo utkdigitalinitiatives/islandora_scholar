@@ -240,13 +240,18 @@ function islandora_scholar_add_usage_and_version_elements_to_mods(AbstractObject
   // Add mods:accessCondition to the first mods:mods element.
   $access_condition_element = $doc->createElementNS($namespace, 'accessCondition');
   $access_condition_element->setAttribute('type', 'use and reproduction');
+  $access_condition_element->setAttribute('displayLabel', 'Copyright holder');
   $access_condition_element->nodeValue = $usage;
   $mods_element->appendChild($access_condition_element);
   // Add mods:physicalDescription to the first mods:mods element.
   $physical_description_element = $doc->createElementNS($namespace, 'physicalDescription');
-  $physical_description_element->setAttribute('authority', 'local');
-  $physical_description_element->nodeValue = $version;
+  $physical_description_note = $doc->createElementNS($namespace, 'note');
+  $physical_description_note->setAttribute('displayLabel', 'Publication Status');
+  $physical_description_note = $doc->createElementNS($namespace, 'note');
+  $physical_description_note->setAttribute('displayLabel', 'Publication Status');
+  $physical_description_note->nodeValue = $version;
   $mods_element->appendChild($physical_description_element);
+  $physical_description_element->appendChild($physical_description_note);
   // Commit changes to datastream.
   $object['MODS']->setContentFromString($doc->saveXML());
 
