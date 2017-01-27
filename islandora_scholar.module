@@ -90,6 +90,7 @@ function islandora_scholar_islandora_xml_form_builder_form_associations() {
       'dsid' => 'MODS',
       'title_field' => array('titleInfo', 'title'),
       'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'UTK_citation_post_process.xsl',
       'template' => FALSE,
     ),
     'islandora_thesis_mods_form' => array(
@@ -98,6 +99,7 @@ function islandora_scholar_islandora_xml_form_builder_form_associations() {
       'dsid' => 'MODS',
       'title_field' => array('titleInfo', 'title'),
       'transform' => 'mods_to_dc.xsl',
+      'self_transform' => 'UTK_ir_etds_post_process.xsl',
       'template' => FALSE,
     ),
   );
