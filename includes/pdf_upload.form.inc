@@ -28,7 +28,7 @@ function islandora_scholar_pdf_upload_form(array $form, array &$form_state)
 
     $form['upload_document'] = array(
         '#type' => 'fieldset',
-        '#title' => t('Upload Document'),
+        '#title' => t('Upload your thesis/dissertation'),
     );
     $form['upload_document']['file'] = array(
         '#type' => 'managed_file',
