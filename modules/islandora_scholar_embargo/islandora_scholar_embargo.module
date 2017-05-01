@@ -376,17 +376,16 @@ function islandora_scholar_embargo_users_to_notify(AbstractObject $object) {
  *   An array representing a list of datastream IDs to be disembargoed.
  */
 function islandora_scholar_embargo_lift_embargo($param, $ds = NULL) {
+    module_load_include('inc', 'islandora_scholar_embargo', 'includes/embargo_xacml_policy');
   $item = $param instanceof AbstractObject ?
     $param :
     islandora_object_load($param);
   $dsid = $ds instanceof AbstractDatastream ? $ds->id : $ds;
   $pid = $item->id;
-  $xacml = new IslandoraXacml($item);
   if ($dsid === NULL) {
     $rels = $item->relationships->get(ISLANDORA_SCHOLAR_EMBARGO_RELS_URI, ISLANDORA_SCHOLAR_EMBARGO_EXPIRY_PRED);
     $item->relationships->remove(ISLANDORA_SCHOLAR_EMBARGO_RELS_URI, ISLANDORA_SCHOLAR_EMBARGO_EXPIRY_PRED);
     $item->relationships->remove(ISLANDORA_SCHOLAR_EMBARGO_RELS_URI, ISLANDORA_SCHOLAR_EMBARGO_NOTIFICATION_PRED);
-    $xacml->viewingRule->clear();
   }
   else {
     // XXX: Casting to array to support external modules calling embargo as the
@@ -402,12 +401,10 @@ function islandora_scholar_embargo_lift_embargo($param, $ds = NULL) {
       $rels = $embargo_ds->relationships->get(ISLANDORA_SCHOLAR_EMBARGO_RELS_URI, ISLANDORA_SCHOLAR_EMBARGO_EXPIRY_PRED);
       $embargo_ds->relationships->remove(ISLANDORA_SCHOLAR_EMBARGO_RELS_URI, ISLANDORA_SCHOLAR_EMBARGO_EXPIRY_PRED);
       $embargo_ds->relationships->remove(ISLANDORA_SCHOLAR_EMBARGO_RELS_URI, ISLANDORA_SCHOLAR_EMBARGO_NOTIFICATION_PRED);
-      $xacml->datastreamRule->removeDsid($datastream_id);
     }
   }
 
-  $xacml->writeBackToFedora();
-
+    islandora_scholar_embargo_xacml_policy_delete($pid);
   // Only notify if the object exists in the repository.
   if ($item instanceof FedoraObject && isset($rels) && !empty($rels)) {
     $expiry = $rels[0]['object']['value'];
@@ -449,6 +446,7 @@ function islandora_scholar_embargo_lift_embargo($param, $ds = NULL) {
  *   the string 'indefinite' to require it to be manually lifted.
  */
 function islandora_scholar_embargo_set_embargo($param, $dsid = NULL, $end = 'indefinite') {
+    module_load_include('inc', 'islandora_scholar_embargo', 'includes/embargo_xacml_policy');
   if ($param instanceof AbstractObject) {
     $item = $param;
   }
@@ -457,6 +455,8 @@ function islandora_scholar_embargo_set_embargo($param, $dsid = NULL, $end = 'ind
   }
   $type = RELS_TYPE_PLAIN_LITERAL;
   $notification = NULL;
+    $dsids = array();
+    $pid = $item->id;
   $item->relationships->registerNamespace('islandora-embargo', ISLANDORA_SCHOLAR_EMBARGO_RELS_URI);
   // XXX We assume the end date is properly formatted...
   if ($end != 'indefinite' && $end !== NULL) {
@@ -465,12 +465,6 @@ function islandora_scholar_embargo_set_embargo($param, $dsid = NULL, $end = 'ind
     $end = gmdate("Y-m-d\TH:i:s\Z", strtotime($end));
     $notification = gmdate("Y-m-d\TH:i:s\Z", strtotime('-10DAYS', strtotime($end)));
   }
-
-  $xacml = new IslandoraXacml($item);
-
-  $users = islandora_scholar_embargo_users_to_notify($item);
-  $roles = variable_get('islandora_scholar_embargo_whitelisted_roles', array());
-
   if ($dsid === NULL) {
     $item->relationships->remove(ISLANDORA_SCHOLAR_EMBARGO_RELS_URI, ISLANDORA_SCHOLAR_EMBARGO_EXPIRY_PRED);
     $item->relationships->remove(ISLANDORA_SCHOLAR_EMBARGO_RELS_URI, ISLANDORA_SCHOLAR_EMBARGO_NOTIFICATION_PRED);
@@ -481,19 +475,13 @@ function islandora_scholar_embargo_set_embargo($param, $dsid = NULL, $end = 'ind
       if ($notification !== NULL) {
         $item->relationships->add(ISLANDORA_SCHOLAR_EMBARGO_RELS_URI, ISLANDORA_SCHOLAR_EMBARGO_NOTIFICATION_PRED, $notification, $type);
       }
-      foreach ($users as $user) {
-        $xacml->viewingRule->addUser($user->name);
-      }
-      foreach ($roles as $role) {
-        $xacml->viewingRule->addRole($role);
-      }
     }
   }
   else {
     // XXX: Casting to array to support external modules calling embargo as the
     // function signature used to accept a string for datastream id.
-    $dsid = (array) $dsid;
-    foreach ($dsid as $datastream_id) {
+      $dsids = (array)$dsid;
+      foreach ($dsids as $datastream_id) {
       // Handles the case where we are setting an embargo before adding the
       // embargoed datastream to the object.
       if (!isset($item[$datastream_id])) {
@@ -512,21 +500,23 @@ function islandora_scholar_embargo_set_embargo($param, $dsid = NULL, $end = 'ind
         if ($notification !== NULL) {
           $embargo_ds->relationships->add(ISLANDORA_SCHOLAR_EMBARGO_RELS_URI, ISLANDORA_SCHOLAR_EMBARGO_NOTIFICATION_PRED, $notification, $type);
         }
-        $xacml->datastreamRule->addDsid($datastream_id);
-        foreach ($users as $user) {
-          $xacml->datastreamRule->addUser($user->name);
-        }
-        foreach ($roles as $role) {
-          $xacml->datastreamRule->addRole($role);
-        }
       }
     }
   }
   // If we had to add users, roles or DSIDs, commit the changes and update the
   // POLICY.
+    /*
   if (!empty($users) || !empty($roles) || !is_null($dsid)) {
     $xacml->writeBackToFedora();
   }
+
+    */
+    if (!isset($item["POLICY"])) {
+        $embargo_ds = $item->constructDatastream("POLICY");
+    }
+
+    islandora_scholar_embargo_xacml_policy_create($pid, $dsids);
+
 }
 
 /**
