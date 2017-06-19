@@ -4,5 +4,6 @@ description = Support embargo management in Islandora Scholar.
 configure = admin/islandora/solution_pack_config/embargo
 package = Islandora Solution Packs
 dependencies[] = rules
+files[]  = includes/embargo_xacml_policy.inc
 core = 7.x
 version = 7.x-dev
