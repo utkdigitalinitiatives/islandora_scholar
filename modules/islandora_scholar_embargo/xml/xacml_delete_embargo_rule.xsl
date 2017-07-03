@@ -15,6 +15,10 @@
         </xsl:copy>
     </xsl:template>
 
+    <xsl:template match="text()">
+        <xsl:value-of select="normalize-space(.)"/>
+    </xsl:template>
+
     <xsl:template match="policy:Rule[@RuleId='deny-dsid-mime'][@Effect='Deny']"/>
 
 </xsl:stylesheet>
