@@ -61,9 +61,7 @@
                                                     AttributeId="urn:fedora:names:fedora:2.1:subject:loginId"/>
                         <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-bag">
                             <xsl:for-each select="ext-str:tokenize($users, ',')">
-                                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">
-                                    <xsl:value-of select="normalize-space(.)"/>
-                                </AttributeValue>
+                                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string"><xsl:value-of select="normalize-space(.)"/></AttributeValue>
                             </xsl:for-each>
                         </Apply>
                     </Apply>
@@ -92,9 +90,7 @@
                     <xsl:for-each select="$dsids-to-embargo">
                         <Resource>
                             <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-                                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">
-                                    <xsl:value-of select="normalize-space(.)"/>
-                                </AttributeValue>
+                                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string"><xsl:value-of select="normalize-space(.)"/></AttributeValue>
                                 <ResourceAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string"
                                                              AttributeId="urn:fedora:names:fedora:2.1:resource:datastream:id"/>
                             </ResourceMatch>
