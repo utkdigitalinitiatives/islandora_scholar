@@ -40,15 +40,7 @@
                 </xsl:call-template>
 
                 <Actions>
-                    <Action>
-                        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">
-                                urn:fedora:names:fedora:2.1:action:id-getDatastreamDissemination
-                            </AttributeValue>
-                            <ActionAttributeDesignator AttributeId="urn:fedora:names:fedora:2.1:action:id"
-                                                       DataType="http://www.w3.org/2001/XMLSchema#string"/>
-                        </ActionMatch>
-                    </Action>
+                    <AnyAction/>
                 </Actions>
             </Target>
             <Condition FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
@@ -69,8 +61,7 @@
                         <SubjectAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string"
                                                     MustBePresent="false" AttributeId="fedoraRole"/>
                         <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-bag">
-                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator
-                            </AttributeValue>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
                         </Apply>
                     </Apply>
                 </Apply>
