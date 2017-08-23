@@ -62,6 +62,7 @@
                                                     MustBePresent="false" AttributeId="fedoraRole"/>
                         <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-bag">
                             <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">thesis_manager_role</AttributeValue>
                         </Apply>
                     </Apply>
                 </Apply>
