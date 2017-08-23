@@ -329,7 +329,7 @@ EOQ;
  * Implements hook_islandora_scholar_embargo_users_to_notify().
  */
 function islandora_scholar_embargo_islandora_scholar_embargo_users_to_notify(AbstractObject $object) {
-  $users = array(user_load(1), user_load_by_name("thesis_manager"));
+  $users = array(user_load(1));
   $owner = $object->owner;
   $owner = is_numeric($owner) ? user_load($owner) : user_load_by_name($owner);
   if ($owner) {
