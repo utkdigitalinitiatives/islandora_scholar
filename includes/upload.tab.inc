@@ -45,8 +45,8 @@ function islandora_scholar_modify_form(array $form, array &$form_state, Abstract
   $mods_doc->loadXML($mods_str);
   $mods_xpath = new DOMXPath($mods_doc);
   $mods_xpath->registerNamespace('m', 'http://www.loc.gov/mods/v3');
-  $usage = t('No usage statement');
-  $mods_usages = $mods_xpath->query('//m:mods/m:accessCondition[@type="use and reproduction"]');
+  $usage = t('No usage statement');;
+  $mods_usages = $mods_xpath->query( '//m:mods/m:note[@displayLabel="Copyright holder"]');
   if ($mods_usages->length > 0) {
     $usage = $mods_usages->item(0)->textContent;
   }
@@ -223,7 +223,7 @@ function islandora_scholar_add_usage_and_version_elements_to_mods(AbstractObject
   $xpath->registerNamespace('mods', $namespace);
   // Remove all instances of mods:accessCondition and mods:physicalDescription
   // from every mods:mods element instance.
-  $access_condition_query = '//mods:accessCondition[@type="use and reproduction"]';
+  $access_condition_query = '//mods:note[@displayLabel="Copyright holder"]';
   $physical_description_query = '//mods:physicalDescription[@authority="local"]';
   $results = $xpath->query("{$access_condition_query} | {$physical_description_query}");
   foreach ($results as $result) {
@@ -235,14 +235,13 @@ function islandora_scholar_add_usage_and_version_elements_to_mods(AbstractObject
   if ($results->length == 0) {
     drupal_set_message(t('Could not find MODS element in object @pid is empty. %refuse.', array('@pid' => $object->id, '%refuse' => $refuse_msg)), 'error');
     return;
-  }
+  } 
   $mods_element = $results->item(0);
-  // Add mods:accessCondition to the first mods:mods element.
-  $access_condition_element = $doc->createElementNS($namespace, 'accessCondition');
-  $access_condition_element->setAttribute('type', 'use and reproduction');
-  $access_condition_element->setAttribute('displayLabel', 'Copyright holder');
-  $access_condition_element->nodeValue = $usage;
-  $mods_element->appendChild($access_condition_element);
+  // Add mods:note[@displayLable="Copyright holder"] to the first mods:mods element.
+  $copyright_holder_element = $doc->createElementNS($namespace, 'note');
+  $copyright_holder_element->setAttribute('displayLabel', 'Copyright holder');
+  $copyright_holder_element->nodeValue = $usage;
+  $mods_element->appendChild($copyright_holder_element);
   // Add mods:physicalDescription to the first mods:mods element.
   $physical_description_element = $doc->createElementNS($namespace, 'physicalDescription');
   $physical_description_note = $doc->createElementNS($namespace, 'note');
