@@ -58,6 +58,7 @@ function islandora_scholar_get_view(AbstractObject $object) {
           '#weight' => $i++,
       ),
       'supplemental_download_8' => array(
+          '#weight' => $i++,
       ),
       'supplemental_download_9' => array(
           '#weight' => $i++,
