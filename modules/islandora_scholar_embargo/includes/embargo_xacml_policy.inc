@@ -46,7 +46,7 @@ function islandora_scholar_embargo_xacml_policy_create($pid, $dsids)
         $object->repository->api->m->modifyDatastream($pid, 'POLICY', $modifyDatastreamArgs);
     } else {
         # create
-        $createDatastreamArgs = array('dsVersionable' => true, 'dsState' => 'A', 'dsMIME' => 'text/xml', 'dsLabel' => 'POLICY Datastream', 'dsChecksumType' => 'SHA-256');
+        $createDatastreamArgs = array('dsVersionable' => true, 'dsState' => 'A', 'dsMIME' => 'application/xml', 'dsLabel' => 'POLICY Datastream', 'dsChecksumType' => 'SHA-256');
         $object->repository->api->m->addDatastream($pid, 'POLICY', 'string', $xacml_string, $createDatastreamArgs);
     }
 }
